@@ -1,0 +1,48 @@
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(109, 40, 217, 0.25);
+}
+
+.title {
+  color: var(--primary-purple);
+  margin-bottom: 8px;
+}
+
+.location {
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-purple-dark);
+  margin-bottom: 16px;
+}
+
+.description {
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.contactBtn {
+  background: var(--primary-purple);
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contactBtn:hover {
+  background: var(--primary-purple-dark);
+}
+
+.loading {
+  text-align: center;
+  margin-top: 40px;
+}

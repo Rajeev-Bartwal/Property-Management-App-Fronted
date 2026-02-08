@@ -1,43 +1,63 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import api from "../services/api";
+import api from "../services/api";
+import styles from "./AddProperty.module.css";
 
-const AddProperty = () => {
+function AddProperty() {
   const [property, setProperty] = useState({
     title: "",
     location: "",
     price: "",
-    description: "",
+    description: ""
   });
 
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-  //   if (!property.title || !property.location || !property.price) {
-  //     alert("Fields cannot be empty");
-  //     return;
-  //   }
+    if (!property.title || !property.location || !property.price) {
+      alert("All fields are required");
+      return;
+    }
 
-  // //   api.post("/properties", property)
-  // //     .then(() => navigate("/properties"))
-  // //     .catch(() => alert("Error saving property"));
+    api.post("/property", property)
+      .then(() => navigate("/properties"))
+      .catch(() => alert("Failed to save property"));
   };
 
   return (
-    <div>
-      <h2>Add Property</h2>
-      <input placeholder="Title" onChange={e => setProperty({ ...property, title: e.target.value })} />
-      <br />
-      <input placeholder="Location" onChange={e => setProperty({ ...property, location: e.target.value })} />
-      <br />
-      <input placeholder="Price" type="number" onChange={e => setProperty({ ...property, price: e.target.value })} />
-      <br />
-      <textarea placeholder="Description" onChange={e => setProperty({ ...property, description: e.target.value })} />
-      <br />
-      <button onClick={handleSubmit}>Submit</button>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Add Property</h2>
+
+      <input
+        placeholder="Property Title"
+        className={styles.input}
+        onChange={e => setProperty({ ...property, title: e.target.value })}
+      />
+
+      <input
+        placeholder="Location"
+        className={styles.input}
+        onChange={e => setProperty({ ...property, location: e.target.value })}
+      />
+
+      <input
+        type="number"
+        placeholder="Price"
+        className={styles.input}
+        onChange={e => setProperty({ ...property, price: e.target.value })}
+      />
+
+      <textarea
+        placeholder="Description"
+        className={styles.textarea}
+        onChange={e => setProperty({ ...property, description: e.target.value })}
+      />
+
+      <button className={styles.submitBtn} onClick={handleSubmit}>
+        Submit
+      </button>
     </div>
   );
 }
-
 
 export default AddProperty;

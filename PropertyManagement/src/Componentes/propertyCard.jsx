@@ -1,18 +1,23 @@
 import { useNavigate } from "react-router-dom";
+import styles from "./PropertyCard.module.css";
 
 function PropertyCard({ property }) {
   const navigate = useNavigate();
 
   return (
     <div
-      style={{ border: "1px solid #ccc", padding: "10px", margin: "10px", cursor: "pointer" }}
+      className={styles.card}
       onClick={() => navigate(`/properties/${property.id}`)}
     >
-      <h3>{property.title}</h3>
-      <p>{property.id}</p>
-      <p>{property.description}</p>
-      <p>{property.location}</p>
-      <p>₹ {property.price}</p>
+      <h3 className={styles.title}>{property.title}</h3>
+
+      <p className={styles.location}>{property.location}</p>
+
+      <p className={styles.description}>
+        {property.description}
+      </p>
+
+      <p className={styles.price}>₹ {property.price}</p>
     </div>
   );
 }
